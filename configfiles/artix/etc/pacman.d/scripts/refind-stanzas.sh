@@ -71,7 +71,7 @@ for KERNEL in "${TARGET}"/vmlinuz*; do
     echo "    options ${OPTIONS}" >> "${STANZAS}"
 
     ## Submenu with debug kernel parameter.
-    echo '    submenuentry "Debug" {'
+    echo '    submenuentry "Debug" {' >> "${STANZAS}"
     echo "        loader  ${KERNEL#${TARGET_MOUNT}}" >> "${STANZAS}"
     OPTIONS=$(echo "${OPTIONS}" | sed 's/\<quiet\>/rd.debug/g')
     echo "        options ${OPTIONS}" >> "${STANZAS}"
