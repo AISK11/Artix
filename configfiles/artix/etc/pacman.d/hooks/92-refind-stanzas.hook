@@ -1,0 +1,22 @@
+## LOCATION:     /etc/pacman.d/hooks/92-refind-stanzas.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Dynamically update static refind entries (stanzas).
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = amd-ucode
+Target = intel-ucode
+Target = linux
+Target = linux-hardened
+Target = linux-lts
+Target = linux-zen
+Target = refind
+
+[Action]
+Depends = refind
+Description = Updating refind stanzas...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/refind-stanzas.sh '/boot/EFI/artix' '/boot/EFI/BOOT/stanzas-artix.conf'
