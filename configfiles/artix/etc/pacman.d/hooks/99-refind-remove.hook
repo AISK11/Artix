@@ -10,5 +10,5 @@ Target = refind
 
 [Action]
 Description = Refind deconfiguration...
-When = PostTransaction
+When = PreTransaction
 Exec = /etc/pacman.d/scripts/refind-remove.sh '/boot/EFI/BOOT'

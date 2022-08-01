@@ -52,7 +52,7 @@ elif [ ! "${DEVICE#/dev/hd}" = "${DEVICE}" ]; then
 elif [ ! "${DEVICE#/dev/mmcblk}" = "${DEVICE}" ]; then
     PARTITION="${DEVICE#/dev/mmcblk[0-9]*p}"
 fi
-PARTUUID=$(blkid | grep "${DEVICE}" | grep -o "PARTUUID.*" | cut -d '=' -f 2 | \ 
+PARTUUID=$(blkid | grep "${DEVICE}" | grep -o "PARTUUID.*" | cut -d '=' -f 2 | \
     tr -d '"')
 
 ## UEFI NVRAM variables.
