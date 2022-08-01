@@ -1,0 +1,18 @@
+## LOCATION:     /etc/pacman.d/hooks/91-boot-install.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Set up boot directory for ucode(s), kernel(s) and
+##               initramfs(es).
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = boot/*-ucode.img
+Target = usr/lib/modules/*/pkgbase
+
+[Action]
+Description = Setting up boot directory...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/boot-install.sh '/boot/EFI/artix'
+NeedsTargets

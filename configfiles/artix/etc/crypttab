@@ -1,0 +1,18 @@
+## LOCATION:     /etc/crypttab
+## AUTHOR:       AISK11
+## DESCRIPTION:  Encrypted block device table.
+## DEPENDENCIES: system/filesystem
+
+## Block device layout:
+##   NAME          FSTYPE       LABEL     UUID
+##   sdX
+##   |-sdX1        vfat         ESP       0000-0001
+##   `-sdX2        crypto_LUKS  LUKS      00000000-0000-0000-0000-000000000002
+##     `-luks-root btrfs        LUKS-ROOT 00000000-0000-0000-0000-000000000003
+##
+## Unencrypted devices are accesible via "/dev/mapper/<MAPPER-NAME>".
+##
+## <MAPPER-NAME> <DEVICE> <PASSWORD-FILE> <OPTIONS>
+
+## LUKS encrypted root partition.
+luks-root UUID=00000000-0000-0000-0000-000000000002 none luks

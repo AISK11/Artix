@@ -1,0 +1,14 @@
+## LOCATION:     /etc/pacman.d/hooks/99-dracut-remove.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Dracut deconfiguration.
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Remove
+Type = Package
+Target = dracut
+
+[Action]
+Description = Dracut deconfiguration...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/dracut-remove.sh

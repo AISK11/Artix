@@ -1,0 +1,24 @@
+## LOCATION:     /etc/fstab
+## AUTHOR:       AISK11
+## DESCRIPTION:  Filesystem table.
+## DEPENDENCIES: system/filesystem
+
+## Block device layout:
+##   NAME          FSTYPE       LABEL     UUID
+##   sdX
+##   |-sdX1        vfat         ESP       0000-0001
+##   `-sdX2        crypto_LUKS  LUKS      00000000-0000-0000-0000-000000000002
+##     `-luks-root btrfs        LUKS-ROOT 00000000-0000-0000-0000-000000000003
+##
+## <FILE-SYSTEM> <MOUNT-DIR> <TYPE> <OPTIONS> <DUMP> <PASS>
+
+## EFI system partition (ESP).
+UUID=00000001 /boot vfat defaults,noatime,umask=0077 0 1
+#LABEL=ESP    /boot vfat defaults,noatime,umask=0077 0 1
+
+## Root partition.
+UUID=00000000-0000-0000-0000-000000000003 / btrfs defaults,noatime 0 0
+#LABEL=LUKS-ROOT                          / btrfs defaults,noatime 0 0
+
+## Swap file.
+/swap none swap defaults 0 0

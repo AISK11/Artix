@@ -1,0 +1,21 @@
+## LOCATION:     /etc/pacman.d/hooks/99-boot-remove.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Clean boot directory from ucode(s), kernel(s) and
+##               initramfs(es).
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Remove
+Type = Package
+Target = amd-ucode
+Target = intel-ucode
+Target = linux
+Target = linux-hardened
+Target = linux-lts
+Target = linux-zen
+
+[Action]
+Description = Cleaning boot directory...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/boot-remove.sh '/boot/EFI/artix'
+NeedsTargets

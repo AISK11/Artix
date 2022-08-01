@@ -1,0 +1,14 @@
+## LOCATION:     /etc/pacman.d/hooks/00-opendoas-install.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Opendoas configuration.
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Install
+Type = Package
+Target = opendoas
+
+[Action]
+Description = Opendoas configuration...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/opendoas-install.sh

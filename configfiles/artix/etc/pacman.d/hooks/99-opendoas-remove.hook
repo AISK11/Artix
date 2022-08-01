@@ -1,0 +1,14 @@
+## LOCATION:     /etc/pacman.d/hooks/99-opendoas-remove.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Opendoas deconfiguration.
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Remove
+Type = Package
+Target = opendoas
+
+[Action]
+Description = Opendoas deconfiguration...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/opendoas-remove.sh

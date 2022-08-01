@@ -1,0 +1,9 @@
+linuxpc
+
+## LOCATION:     /etc/hostname
+## AUTHOR:       AISK11
+## DESCRIPTION:  Machine name.
+## DEPENDENCIES: -
+
+## Valid hostname characters are a-z, 0-9, not on start '-'s.
+## Only first line is read and used as machine name.
