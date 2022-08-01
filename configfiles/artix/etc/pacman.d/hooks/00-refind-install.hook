@@ -1,0 +1,15 @@
+## LOCATION:     /etc/pacman.d/hooks/00-refind-install.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Refind configuration.
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = refind
+
+[Action]
+Description = Refind configuration...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/refind-install.sh '/boot/EFI/BOOT'

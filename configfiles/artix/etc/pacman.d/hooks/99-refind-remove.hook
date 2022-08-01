@@ -1,0 +1,14 @@
+## LOCATION:     /etc/pacman.d/hooks/99-refind-remove.hook
+## AUTHOR:       AISK11
+## DESCRIPTION:  Refind deconfiguration.
+## DEPENDENCIES: system/pacman
+
+[Trigger]
+Operation = Remove
+Type = Package
+Target = refind
+
+[Action]
+Description = Refind deconfiguration...
+When = PostTransaction
+Exec = /etc/pacman.d/scripts/refind-remove.sh '/boot/EFI/BOOT'
