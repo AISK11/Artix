@@ -28,9 +28,10 @@ EOF
     cat << EOF > '/usr/lib/dracut/modules.d/50numlock/numlock.sh'
 #!/usr/bin/env sh
 
-TTYS=/dev/tty[1-8]
-for tty in "\${TTYS}"; do
-    /usr/bin/setleds -D +num < "\${tty}"
+TTY=1
+while [ ! "\${TTY}" = "9" ]; do
+    /usr/bin/setleds -D +num < "/dev/tty\${TTY}"
+    TTY="\$(( \${TTY} + 1 ))"
 done
 EOF
 fi
