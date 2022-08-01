@@ -15,9 +15,10 @@ cat << EOF > '/etc/doas.conf'
 ## DESCRIPTION:  Privilege escalation permission file.
 ## DEPENDENCIES: galaxy/opendoas
 
-## If "doas" group is not in "/etc/group", create it with \$(groupadd doas).
-##
-## Add user to doas group: \$(usermod -aG doas <USER>).
+## 1. If "doas" group is not in "/etc/group", create it:
+##    \$(groupadd doas)
+## 2. Add user to doas group:
+##    \$(usermod -aG doas <USER>)
 
 ## Grand root permissions to "doas" group without requiring password.
 permit nopass :doas
