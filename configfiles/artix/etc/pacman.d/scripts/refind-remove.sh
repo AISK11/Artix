@@ -42,7 +42,7 @@ done
 REFIND="${TARGET#${TARGET_MOUNT}}/refind_x64.efi"
 
 ## Block device and partition variables.
-DEVICE=$(grep "${TARGET_MOUNT}" /etc/mtab | tail -n 1 | cut -d ' ' -f 1)
+DEVICE=$(grep -w "${TARGET_MOUNT}" /etc/mtab | tail -n 1 | cut -d ' ' -f 1)
 if [ ! "${DEVICE#/dev/nvme}" = "${DEVICE}" ]; then
     PARTITION="${DEVICE#/dev/nvme[0-9]*n[0-9]*p}"
 elif [ ! "${DEVICE#/dev/sd}" = "${DEVICE}" ]; then
