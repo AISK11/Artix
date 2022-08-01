@@ -67,13 +67,13 @@ for KERNEL in "${TARGET}"/vmlinuz*; do
         OPTIONS="${OPTIONS} initrd=${UCODE#${TARGET_MOUNT}}"
     done
     [ -f "${INITRAMFS}" ] && OPTIONS="${OPTIONS} initrd=${INITRAMFS}"
-    echo "    options ${OPTIONS}" >> "${STANZAS}"
+    echo "    options \"${OPTIONS}\"" >> "${STANZAS}"
 
     ## Submenu with debug kernel parameter.
     echo '    submenuentry "Debug" {' >> "${STANZAS}"
     echo "        loader  ${KERNEL#${TARGET_MOUNT}}" >> "${STANZAS}"
     OPTIONS=$(echo "${OPTIONS}" | sed 's/\<quiet\>/rd.debug/g')
-    echo "        options ${OPTIONS}" >> "${STANZAS}"
+    echo "        options \"${OPTIONS}\"" >> "${STANZAS}"
     echo "    }" >> "${STANZAS}"
     echo "}" >> "${STANZAS}"
 done
