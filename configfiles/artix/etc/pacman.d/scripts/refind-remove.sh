@@ -22,13 +22,6 @@ rm -rf "${TARGET}/icons/" "${TARGET}/fonts/" "${TARGET}/themes/"
 rm -f "${TARGET}/refind.conf"
 [ -f "${TARGET}/stanzas-artix.conf" ] && rm -f "${TARGET}/stanzas-artix.conf"
 
-## Remove empty directories left behind.
-while [ 'true' ]; do
-    grep -w "${TARGET}" /etc/mtab > /dev/null && break
-    rmdir "${TARGET}/" 2> /dev/null || break
-    TARGET="${TARGET%/*}"
-done
-
 ## ESP variables.
 TARGET_MOUNT="${TARGET}"
 while [ 'true' ]; do
@@ -74,4 +67,11 @@ fi
 ## Remount efivars to be RO.
 grep '/sys/firmware/efi/efivars' /etc/mtab | grep -w 'rw' > /dev/null && \
     mount -o remount,ro /sys/firmware/efi/efivars
+
+## Remove empty directories left behind.
+while [ 'true' ]; do
+    grep -w "${TARGET}" /etc/mtab > /dev/null && break
+    rmdir "${TARGET}/" 2> /dev/null || break
+    TARGET="${TARGET%/*}"
+done
 exit 0
