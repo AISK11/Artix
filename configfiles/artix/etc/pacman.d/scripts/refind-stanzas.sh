@@ -66,7 +66,8 @@ for KERNEL in "${TARGET}"/vmlinuz*; do
     for UCODE in "${TARGET}"/*-ucode.img; do
         OPTIONS="${OPTIONS} initrd=${UCODE#${TARGET_MOUNT}}"
     done
-    [ -f "${INITRAMFS}" ] && OPTIONS="${OPTIONS} initrd=${INITRAMFS}"
+    [ -f "${INITRAMFS}" ] && OPTIONS="${OPTIONS} \
+        initrd=${INITRAMFS#${TARGET_MOUNT}}"
     echo "    options \"${OPTIONS}\"" >> "${STANZAS}"
 
     ## Submenu with debug kernel parameter.
