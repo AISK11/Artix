@@ -64,7 +64,8 @@ for KERNEL in "${TARGET}"/vmlinuz*; do
     ## Entry options.
     OPTIONS="quiet rw root=${ROOT_DEVICE}"
     for UCODE in "${TARGET}"/*-ucode.img; do
-        OPTIONS="${OPTIONS} initrd=${UCODE#${TARGET_MOUNT}}"
+        [ -f "${UCODE}" ] && \
+            OPTIONS="${OPTIONS} initrd=${UCODE#${TARGET_MOUNT}}"
     done
     [ -f "${INITRAMFS}" ] && \
         OPTIONS="${OPTIONS} initrd=${INITRAMFS#${TARGET_MOUNT}}"

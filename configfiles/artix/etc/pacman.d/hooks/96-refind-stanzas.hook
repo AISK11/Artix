@@ -6,16 +6,6 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Type = Package
-Target = amd-ucode
-Target = intel-ucode
-Target = linux
-Target = linux-hardened
-Target = linux-lts
-Target = linux-zen
-Target = refind
-
-[Trigger]
 Operation = Remove
 Type = Package
 Target = amd-ucode
@@ -24,6 +14,7 @@ Target = linux
 Target = linux-hardened
 Target = linux-lts
 Target = linux-zen
+Target = refind
 
 [Action]
 Depends = refind
