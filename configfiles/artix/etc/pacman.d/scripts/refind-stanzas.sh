@@ -62,12 +62,11 @@ for KERNEL in "${TARGET}"/vmlinuz*; do
     echo "    loader  ${KERNEL#${TARGET_MOUNT}}" >> "${STANZAS}"
 
     ## Entry options.
-    OPTIONS="rw root=${ROOT_DEVICE} quiet"
+    OPTIONS="quiet rw root=${ROOT_DEVICE}"
     for UCODE in "${TARGET}"/*-ucode.img; do
         OPTIONS="${OPTIONS} initrd=${UCODE#${TARGET_MOUNT}}"
     done
-    [ -f "${INITRAMFS}" ] && OPTIONS="${OPTIONS} \
-        initrd=${INITRAMFS#${TARGET_MOUNT}}"
+    [ -f "${INITRAMFS}" ] && OPTIONS="${OPTIONS} initrd=${INITRAMFS#${TARGET_MOUNT}}"
     echo "    options \"${OPTIONS}\"" >> "${STANZAS}"
 
     ## Submenu with debug kernel parameter.
