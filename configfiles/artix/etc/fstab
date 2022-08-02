@@ -13,8 +13,8 @@
 ## <FILE-SYSTEM> <MOUNT-DIR> <TYPE> <OPTIONS> <DUMP> <PASS>
 
 ## EFI system partition (ESP).
-UUID=00000001 /boot vfat defaults,noatime,umask=0077 0 1
-#LABEL=ESP    /boot vfat defaults,noatime,umask=0077 0 1
+UUID=0000-0001 /boot vfat defaults,noatime,umask=0077 0 1
+#LABEL=ESP     /boot vfat defaults,noatime,umask=0077 0 1
 
 ## Root partition.
 UUID=00000000-0000-0000-0000-000000000003 / btrfs defaults,noatime 0 0
