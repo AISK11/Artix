@@ -24,7 +24,6 @@ install() {
     inst_hook pre-trigger 50 "\${moddir}/numlock.sh"
 }
 EOF
-
     cat << EOF > '/usr/lib/dracut/modules.d/50numlock/numlock.sh'
 #!/usr/bin/env sh
 
@@ -38,12 +37,12 @@ fi
 
 ## Change dracut's default initramfs scripts to do nothing.
 [ -f '/usr/share/libalpm/scripts/dracut-install' ] && \
-cat <<EOF > '/usr/share/libalpm/scripts/dracut-install'
+    cat <<EOF > '/usr/share/libalpm/scripts/dracut-install'
 #!/usr/bin/env sh
 exit 0
 EOF
 [ -f '/usr/share/libalpm/scripts/dracut-remove' ] && \
-cat <<EOF > '/usr/share/libalpm/scripts/dracut-remove'
+    cat <<EOF > '/usr/share/libalpm/scripts/dracut-remove'
 #!/usr/bin/env sh
 exit 0
 EOF

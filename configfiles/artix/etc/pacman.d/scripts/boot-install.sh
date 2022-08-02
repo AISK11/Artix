@@ -33,7 +33,10 @@ generate_initramfs() {
 ## Determine which package is being installed/updated.
 while read -r INPUT; do
     INPUT="/${INPUT}"
-    [ ! "${INPUT%-ucode.img}" = "${INPUT}" ] && move_ucode "${INPUT}"
-    [ ! "${INPUT%pkgbase}" = "${INPUT}" ] && copy_kernel "${INPUT%/*}"
+    if [ ! "${INPUT%-ucode.img}" = "${INPUT}" ]; then
+        move_ucode "${INPUT}"
+    elif [ ! "${INPUT%pkgbase}" = "${INPUT}" ]; then
+        copy_kernel "${INPUT%/*}"
+    fi
 done
 exit 0

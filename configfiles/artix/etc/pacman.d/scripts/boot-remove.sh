@@ -28,8 +28,11 @@ remove_initramfs() {
 
 ## Determine which package is being removed.
 while read -r INPUT; do
-    [ ! "${INPUT%-ucode}" = "${INPUT}" ] && remove_ucode "${INPUT}"
-    [ ! "${INPUT#linux}" = "${INPUT}" ] && remove_kernel "${INPUT}"
+    if [ ! "${INPUT%-ucode}" = "${INPUT}" ]; then
+        remove_ucode "${INPUT}"
+    elif [ ! "${INPUT#linux}" = "${INPUT}" ]; then
+        remove_kernel "${INPUT}"
+    fi
 done
 
 ## Remove empty directories left behind.
