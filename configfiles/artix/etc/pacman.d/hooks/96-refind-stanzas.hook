@@ -1,4 +1,4 @@
-## LOCATION:     /etc/pacman.d/hooks/92-refind-stanzas.hook
+## LOCATION:     /etc/pacman.d/hooks/96-refind-stanzas.hook
 ## AUTHOR:       AISK11
 ## DESCRIPTION:  Dynamically update static refind entries (stanzas).
 ## DEPENDENCIES: system/pacman
@@ -6,7 +6,6 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Operation = Remove
 Type = Package
 Target = amd-ucode
 Target = intel-ucode
@@ -15,6 +14,16 @@ Target = linux-hardened
 Target = linux-lts
 Target = linux-zen
 Target = refind
+
+[Trigger]
+Operation = Remove
+Type = Package
+Target = amd-ucode
+Target = intel-ucode
+Target = linux
+Target = linux-hardened
+Target = linux-lts
+Target = linux-zen
 
 [Action]
 Depends = refind

@@ -22,6 +22,9 @@ rm -rf "${TARGET}/icons/" "${TARGET}/fonts/" "${TARGET}/themes/"
 rm -f "${TARGET}/refind.conf"
 [ -f "${TARGET}/stanzas-artix.conf" ] && rm -f "${TARGET}/stanzas-artix.conf"
 
+## Remove rEFind variables left behind.
+[ -d "${TARGET}/vars/" ] && rm -rf "${TARGET}/vars/"
+
 ## ESP variables.
 TARGET_MOUNT="${TARGET}"
 while [ 'true' ]; do

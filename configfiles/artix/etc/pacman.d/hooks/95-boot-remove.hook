@@ -1,4 +1,4 @@
-## LOCATION:     /etc/pacman.d/hooks/99-boot-remove.hook
+## LOCATION:     /etc/pacman.d/hooks/95-boot-remove.hook
 ## AUTHOR:       AISK11
 ## DESCRIPTION:  Clean boot directory from ucode(s), kernel(s) and
 ##               initramfs(es).
