@@ -37,9 +37,6 @@ EOF
 
 ## Add static entries to refind's stanzas config file.
 for KERNEL in "${TARGET}"/vmlinuz*; do
-    ## Exit if there are no kernels.
-    [ -z "${KERNEL}" ] && exit 1
-
     ## Entry name.
     if [ $(basename "${KERNEL}") = 'vmlinuz-linux' ]; then
         echo 'menuentry "Artix" {' >> "${STANZAS}"
@@ -53,6 +50,8 @@ for KERNEL in "${TARGET}"/vmlinuz*; do
     elif [ $(basename "${KERNEL}") = 'vmlinuz-linux-zen' ]; then
         echo 'menuentry "Artix Zen" {' >> "${STANZAS}"
         INITRAMFS="${TARGET}/initramfs-linux-zen.img"
+    else
+        break
     fi
 
     ## Entry icon.
