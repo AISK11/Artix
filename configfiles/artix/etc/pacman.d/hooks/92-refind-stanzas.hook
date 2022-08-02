@@ -6,6 +6,7 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
+Operation = Remove
 Type = Package
 Target = amd-ucode
 Target = intel-ucode
